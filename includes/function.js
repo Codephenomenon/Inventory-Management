@@ -1,16 +1,19 @@
-window.addEventListener('load', function() {
+const ajax = new XMLHttpRequest();
 
-  const ajax = new XMLHttpRequest();
-  const inputBar = document.getElementById('inputBar');
+const container = document.getElementById('list-container');
+const inputBar = document.getElementById('inputBar');
+const inputButton = document.getElementById('inputButton');
+
+window.addEventListener('load', function() {
 
   ajax.open('GET', './utils/listInventory.php', true);
   ajax.onreadystatechange = handler;
   ajax.send(null);
 
+  // Initial display of inventory items on Home page
   function handler() {
     if (ajax.readyState == 4 && ajax.status == 200) {
-
-      const container = document.getElementById('list-container');
+      container.innerHTML = "";
       let json = JSON.parse(ajax.responseText);
       let markup;
 
@@ -31,13 +34,38 @@ window.addEventListener('load', function() {
     } else {
         console.log('error with ajax object, status: ' + ajax.status + ', readyState: ' + ajax.readyState);
       }
-  }
+  }; // handler()
 
-  function displayMatches() {
-    console.log(inputBar.value);
-  }
-
+  // Event Listeners for homepage
   inputBar.addEventListener('change', displayMatches);
   inputBar.addEventListener('keyup', displayMatches);
+  inputButton.addEventListener('click', displayMatches);
 
 });
+
+// handler for processing orders
+function processOrder(order_id) {
+  ajax.open('POST', './utils/processOrders.php');
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.send(encodeURI('id=' + order_id));
+  setTimeout(function() {
+    window.location.reload();
+  }, 500);
+}; // processOrder()
+
+// AJAX response for user searches
+function displayMatches() {
+  let search = inputBar.value;
+  ajax.open('POST', './utils/listInventorySearch.php', true);
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.send(encodeURI('search=' + search));
+  ajax.onreadystatechange = handler;
+}
+
+function displayCategory(id) {
+  let search = id;
+  ajax.open('POST', './utils/listInventoryCategory.php', true);
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.send(encodeURI('search=' + search));
+  ajax.onreadystatechange = handler;
+}

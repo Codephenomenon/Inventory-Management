@@ -13,7 +13,7 @@
         <div class="col-10 offset-1 input-group mb-3">
           <input id="inputBar" type="text" class="form-control" placeholder="Product..." aria-label="Username" aria-describedby="basic-addon1">
           <div class="input-group-append">
-            <button class="btn btn-info" type="button"><i class="fas fa-search"></i></button>
+            <button id="inputButton" class="btn btn-info" type="button"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<div class='p-3 col-12'>";
-            echo "<label class='checkbox-inline'><input class='mr-2' type='checkbox' value='" . $row['category_id'] . "'>" . $row['category_name'] . "</label>";
+            echo "<label onclick='displayCategory(" . $row['category_id'] . ")' class='checkbox-inline checkbox-container'><input class='mr-2 checkbox' type='checkbox'>" . $row['category_name'] . "<span class='checkmark'></span></label>";
             echo "</div>";
           }
         ?>

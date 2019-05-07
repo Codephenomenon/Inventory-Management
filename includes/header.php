@@ -16,8 +16,8 @@
         if (isset($_SESSION['userEmail'])) {
           echo "<ul class='horizontal nav navbar-nav text-white'>
             <li class='nav-item'><a href='./home.php'>Home</a></li>
-            <li><a href='./add.php'>Add Items</a></li>
             <li><a href='./orders.php'>Orders</a></li>
+            <li><a href='./add.php'>Add Items</a></li>
           </ul>";
         }
         ?>

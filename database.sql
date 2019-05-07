@@ -34,3 +34,22 @@ CREATE TABLE inventory (
   FOREIGN KEY (item_category) REFERENCES category (category_id),
   PRIMARY KEY (item_id)
 );
+
+CREATE TABLE orders (
+  order_id INT NOT NULL AUTO_INCREMENT,
+  customer_name CHAR(100) NOT NULL,
+  customer_address VARCHAR(200),
+  order_total FLOAT,
+  time_placed DATE,
+
+  PRIMARY KEY (order_id)
+);
+
+CREATE TABLE order_items (
+  order_id INT,
+  item_id INT,
+  item_name VARCHAR(50),
+  item_cost FLOAT,
+
+  FOREIGN KEY (order_id) REFERENCES orders (order_id) ON DELETE CASCADE
+);

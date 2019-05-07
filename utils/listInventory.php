@@ -1,8 +1,6 @@
 <?php
-
+    include('../database/database.php');
     header('Content-Type: text/json');
-
-    $connection = mysqli_connect('localhost', 'scott', 'tiger', 'cms');
 
     $query = 'SELECT * FROM inventory';
     $result = mysqli_query($connection, $query);
