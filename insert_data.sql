@@ -82,19 +82,19 @@ INSERT INTO order_items (order_id, item_id, item_name, item_cost)
 VALUES (1, 8, 'Slim-Fit European Jacket', 60.61);
 
 INSERT INTO order_items (order_id, item_id, item_name, item_cost)
-VALUES (1, 9, 'Light Windbreaker Jacket', 42.29);
+VALUES (1, 10, 'Light Windbreaker Jacket', 42.29);
 
 INSERT INTO order_items (order_id, item_id, item_name, item_cost)
-VALUES (1, 9, 'Light Windbreaker Jacket', 42.29);
+VALUES (1, 10, 'Light Windbreaker Jacket', 42.29);
 
 INSERT INTO orders (customer_name, customer_address, order_total, time_placed)
 VALUES ('Lorena Hill', '51 Newbridge Dr. Altamonte Springs', 106.43, '2019-01-12');
 
 INSERT INTO order_items (order_id, item_id, item_name, item_cost)
-VALUES (2, 14, 'Cats For Peace T-shirt', 20.99);
+VALUES (2, 15, 'Cats For Peace T-shirt', 20.99);
 
 INSERT INTO order_items (order_id, item_id, item_name, item_cost)
-VALUES (2, 16, 'PBS Nerd T-shirt', 25.49);
+VALUES (2, 17, 'PBS Nerd T-shirt', 25.49);
 
 INSERT INTO order_items (order_id, item_id, item_name, item_cost)
-VALUES (2, 16, 'Vans Ward Lo Suede Sneaker', 59.95);
+VALUES (2, 2, 'Vans Ward Lo Suede Sneaker', 59.95);
